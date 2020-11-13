@@ -1,0 +1,24 @@
+<div class="container my-4">
+  <h3>Register Product</h3>
+  <form *ngIf="this.applicationId && this.data && productList && productList.length" (ngSubmit)="onSubmit()">
+    <div class="form-group">
+      <label for="product">Product</label>
+      <select class="form-control" name="product" [(ngModel)]="data.productId">
+        <option *ngFor="let d of productList" [value]="d.id">{{d.name + "-" + d.description}}</option>
+      </select>
+    </div>
+    <div class="float-right">
+      <button class="btn btn-success btn-sm">Submit</button>
+    </div>
+  </form>
+  <div *ngIf="!this.applicationId || !this.data" class="alert alert-danger" role="alert">
+    Error
+  </div>
+  <div *ngIf="!productList || !productList.length" class="alert alert-danger" role="alert">
+    No Product to Register.
+  </div>ü
+  <div class="float-right">
+    <button style='margin-right:16px' (click)="back()" class="btn btn-info btn-sm">Application
+      Back</button>
+  </div>
+</div>
